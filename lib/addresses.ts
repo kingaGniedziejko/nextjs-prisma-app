@@ -1,0 +1,46 @@
+import { revalidatePath } from 'next/cache';
+import { prisma } from './prisma';
+import { Address, AddressData } from './types/types';
+
+export const getUserAddresses = async (
+	userId: number,
+	page: number,
+	pageSize = 10
+): Promise<[Address[], number]> => {
+	const addressesPromise = prisma.users_addresses.findMany({
+		where: { user_id: userId },
+		skip: (page - 1) * pageSize,
+		take: pageSize
+	});
+	const totalCountPromise = prisma.users_addresses.count({ where: { user_id: userId } });
+	const [addresses, totalCount] = await Promise.all([addressesPromise, totalCountPromise]);
+	const totalPagesCount = Math.ceil(totalCount / pageSize);
+
+	return [addresses as Address[], totalPagesCount];
+};
+
+export const createUserAddress = async (userId: number, addressData: AddressData) => {
+	console.log('createUserAddress', addressData);
+	prisma.users_addresses.create({
+		data: {
+			user_id: userId,
+			...addressData
+		}
+	});
+};
+
+export const updateUserAddress = async (userId: number, addressData: AddressData) => {
+	console.log('updateUserAddress', addressData);
+	prisma.users_addresses.update({
+		where: {
+			user_id_address_type_valid_from: {
+				user_id: userId,
+				address_type: addressData.address_type,
+				valid_from: addressData.valid_from
+			}
+		},
+		data: { ...addressData }
+	});
+
+	revalidatePath('/[id]');
+};
