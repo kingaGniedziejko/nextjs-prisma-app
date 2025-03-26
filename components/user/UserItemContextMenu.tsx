@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import ContextMenu from './ContextMenu';
+import ContextMenu from '../ContextMenu';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 

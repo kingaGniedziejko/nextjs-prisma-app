@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import ListPagination from '@/components/ListPagination';
 import AddressItem from '@/components/address/AddressItem';
 import { getUser } from '@/lib/users';
@@ -25,7 +24,9 @@ const Page: React.FC<PageProps> = async ({ params, searchParams }) => {
 	return (
 		<div className="flex flex-col p-5 md:p-10 space-y-5 h-[100vh] w-[100vw]">
 			<div className="flex flex-row justify-between">
-				<h1 className="text-2xl font-bold">{`Addresses - ${user?.first_name} ${user?.last_name}`}</h1>
+				<h1 className="text-2xl font-bold">
+					{`${user?.first_name} ${user?.last_name}`} - Addresses
+				</h1>
 				<CreateAddressButton userId={Number(id)} />
 			</div>
 			<div className="flex flex-col overflow-y-auto">

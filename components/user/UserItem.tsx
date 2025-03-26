@@ -2,7 +2,6 @@ import { User } from '@/lib/types/types';
 import { Avatar } from '@mui/material';
 import React from 'react';
 import { stringToColor } from '@/lib/utils';
-import ContextMenu from './ContextMenu';
 import Link from 'next/link';
 import UserItemContextMenu from './UserItemContextMenu';
 

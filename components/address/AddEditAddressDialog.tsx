@@ -19,7 +19,7 @@ import { IFormState } from '@/lib/types/IFormState.interface';
 import AddressDisplay from './AddressDisplay';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { dateFormat } from '@/lib/const';
 
 interface AddEditAddressDialogProps {
@@ -220,8 +220,8 @@ const AddEditAddressDialog: React.FC<AddEditAddressDialogProps> = ({
 						error={!!state.country_code}
 						helperText={state.country_code}
 					/>
+					<AddressDisplay address={addressValue} />
 				</form>
-				<AddressDisplay address={addressValue} />
 			</DialogContent>
 			<DialogActions>
 				<Button variant="outlined" onClick={handleCloseDialog}>
