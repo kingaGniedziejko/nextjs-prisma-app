@@ -22,7 +22,7 @@ const Page: React.FC<PageProps> = async ({ params, searchParams }) => {
 	]);
 
 	return (
-		<div className="flex flex-col p-5 md:p-10 space-y-5 h-[100vh] w-[100vw]">
+		<>
 			<div className="flex flex-row justify-between">
 				<h1 className="text-2xl font-bold">
 					{`${user?.first_name} ${user?.last_name}`} - Addresses
@@ -39,7 +39,7 @@ const Page: React.FC<PageProps> = async ({ params, searchParams }) => {
 				totalPages={totalPagesCount}
 				currentPage={currentPage}
 			/>
-		</div>
+		</>
 	);
 };
 

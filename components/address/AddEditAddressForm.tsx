@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
@@ -144,7 +146,7 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 				error={!!state.country_code}
 				helperText={state.country_code}
 			/>
-			<AddressDisplay address={addressValue} />
+			<AddressDisplay className="mt-5" address={addressValue} />
 		</form>
 	);
 };

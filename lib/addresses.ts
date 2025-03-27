@@ -1,6 +1,7 @@
 import { revalidatePath } from 'next/cache';
 import { prisma } from './prisma';
-import { Address, AddressData } from './types/types';
+import { Address, AddressData, AddressType } from './types/types';
+import { Dayjs } from 'dayjs';
 
 export const getUserAddresses = async (
 	userId: number,
@@ -19,6 +20,22 @@ export const getUserAddresses = async (
 	return [addresses as Address[], totalPagesCount];
 };
 
+export const getUserAddress = async (
+	userId: number,
+	addressType: AddressType,
+	validFrom: Date
+): Promise<Address | null> => {
+	return prisma.users_addresses.findUnique({
+		where: {
+			address_id: {
+				user_id: userId,
+				address_type: addressType,
+				valid_from: validFrom
+			}
+		}
+	}) as Promise<Address | null>;
+};
+
 export const createUserAddress = async (userId: number, addressData: AddressData) => {
 	console.log('createUserAddress', addressData);
 	prisma.users_addresses.create({
@@ -33,7 +50,7 @@ export const updateUserAddress = async (userId: number, addressData: AddressData
 	console.log('updateUserAddress', addressData);
 	prisma.users_addresses.update({
 		where: {
-			user_id_address_type_valid_from: {
+			address_id: {
 				user_id: userId,
 				address_type: addressData.address_type,
 				valid_from: addressData.valid_from

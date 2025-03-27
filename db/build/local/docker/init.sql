@@ -65,6 +65,6 @@ VALUES
     ('Sophia', 'King', 'SK', 'sophia.king@example.com', 'ACTIVE');
 
 INSERT INTO users_addresses (user_id, address_type, valid_from, post_code, city, country_code, street, building_number)
-SELECT id, 'HOME', CURRENT_TIMESTAMP, 
+SELECT id, 'HOME', CURRENT_TIMESTAMP(3), 
     '123456', 'Sample City', 'USA', 'Main Street', '10A'
 FROM users;

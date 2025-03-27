@@ -15,7 +15,7 @@ const Page: React.FC<PageProps> = async ({ searchParams }) => {
 	const [users, totalPagesCount] = await getUsers(currentPage, PAGE_SIZE);
 
 	return (
-		<div className="flex flex-col p-5 md:p-10 space-y-5 h-[100vh] w-[100vw]">
+		<>
 			<div className="flex flex-row justify-between">
 				<h1 className="text-2xl font-bold">Users</h1>
 				<Button variant="contained">Create</Button>
@@ -33,7 +33,7 @@ const Page: React.FC<PageProps> = async ({ searchParams }) => {
 				totalPages={totalPagesCount}
 				currentPage={currentPage}
 			/>
-		</div>
+		</>
 	);
 };
 
