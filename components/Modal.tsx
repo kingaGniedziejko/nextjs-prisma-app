@@ -7,14 +7,19 @@ import { useRouter } from 'next/navigation';
 
 interface ModalProps {
 	title: string;
+	redirectPathOnClose?: string;
 	children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ title, children }) => {
+const Modal: React.FC<ModalProps> = ({ title, redirectPathOnClose, children }) => {
 	const router = useRouter();
 
 	const handleCloseDialog = () => {
-		router.back();
+		if (redirectPathOnClose) {
+			router.push(redirectPathOnClose);
+		} else {
+			router.back();
+		}
 	};
 
 	return (
@@ -31,14 +36,6 @@ const Modal: React.FC<ModalProps> = ({ title, children }) => {
 				</IconButton>
 			</DialogTitle>
 			<DialogContent>{children}</DialogContent>
-			{/* <DialogActions>
-				<Button variant="outlined" onClick={handleCloseDialog}>
-					Cancel
-				</Button>
-				<Button variant="contained" type="submit" form="add-edit-address-form">
-					Save
-				</Button>
-			</DialogActions> */}
 		</Dialog>
 	);
 };

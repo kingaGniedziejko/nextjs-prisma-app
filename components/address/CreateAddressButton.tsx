@@ -16,7 +16,7 @@ const CreateAddressButton: React.FC<CreateAddressButtonProps> = ({ userId }) => 
 			<Button variant="contained" onClick={handleOpen}>
 				Create
 			</Button>
-			<AddEditAddressDialog open={open} handleClose={handleClose} userId={userId} />
+			{/* <AddEditAddressDialog open={open} handleClose={handleClose} userId={userId} /> */}
 		</>
 	);
 };

@@ -3,14 +3,17 @@
 import { createUserAddress, updateUserAddress } from '@/lib/addresses';
 import { IFormState } from '@/lib/types/IFormState.interface';
 import { AddressData, AddressFormData, AddressType } from '@/lib/types/types';
-import dayjs from 'dayjs';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 export const saveUserAddress = async (
 	userId: number,
 	isEdit: boolean,
+	originalAddressType: AddressType | undefined,
+	originalValidFrom: Date | undefined,
 	_previousState: Partial<IFormState<AddressFormData>>,
 	formData: FormData
-) => {
+): Promise<IFormState<AddressFormData>> => {
 	// Validation
 	let newErrors = {};
 	// address_type
@@ -35,15 +38,13 @@ export const saveUserAddress = async (
 	if (formData.get('country_code')?.toString() === '')
 		newErrors = { ...newErrors, country_code: 'Please enter the value' };
 
-	// console.log(addressData);
-
 	if (!(Object.keys(newErrors).length === 0 && newErrors.constructor === Object)) {
-		return newErrors;
+		return { errors: newErrors };
 	}
 
 	const addressData: AddressData = {
 		address_type: formData.get('address_type') as AddressType,
-		valid_from: dayjs(formData.get('valid_from')?.toString()).toDate(),
+		valid_from: new Date(formData.get('valid_from')?.toString() || ''),
 		street: formData.get('street')?.toString() || '',
 		building_number: formData.get('building_number')?.toString() || '',
 		post_code: formData.get('post_code')?.toString() || '',
@@ -51,7 +52,12 @@ export const saveUserAddress = async (
 		country_code: formData.get('country_code')?.toString() || ''
 	};
 
-	await (isEdit ? updateUserAddress(userId, addressData) : createUserAddress(userId, addressData));
+	if (isEdit && originalAddressType && originalValidFrom) {
+		await updateUserAddress(userId, originalAddressType, originalValidFrom, addressData);
+	} else {
+		await createUserAddress(userId, addressData);
+	}
 
-	return {};
+	revalidatePath(`/${userId}`);
+	redirect(`/${userId}`);
 };

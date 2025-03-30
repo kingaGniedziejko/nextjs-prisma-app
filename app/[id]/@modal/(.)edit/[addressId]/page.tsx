@@ -10,7 +10,6 @@ interface PageProps {
 
 const Page: React.FC<PageProps> = async ({ params }) => {
 	const { id, addressId } = await params;
-	console.log(id, addressId);
 
 	const splittedAddress = splitAddressId(addressId);
 	if (!splittedAddress || Number(id) !== splittedAddress[0]) {
@@ -28,7 +27,10 @@ const Page: React.FC<PageProps> = async ({ params }) => {
 	}
 
 	return (
-		<Modal title={`Edit Address of `}>
+		<Modal
+			title={`Edit Address of ${user?.first_name} ${user?.last_name}`}
+			redirectPathOnClose={`/${userId}`}
+		>
 			<AddEditAddressForm userId={userId} addressToEdit={address} />
 		</Modal>
 	);

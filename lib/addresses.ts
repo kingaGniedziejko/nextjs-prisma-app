@@ -1,7 +1,5 @@
-import { revalidatePath } from 'next/cache';
 import { prisma } from './prisma';
 import { Address, AddressData, AddressType } from './types/types';
-import { Dayjs } from 'dayjs';
 
 export const getUserAddresses = async (
 	userId: number,
@@ -46,18 +44,20 @@ export const createUserAddress = async (userId: number, addressData: AddressData
 	});
 };
 
-export const updateUserAddress = async (userId: number, addressData: AddressData) => {
-	console.log('updateUserAddress', addressData);
-	prisma.users_addresses.update({
+export const updateUserAddress = async (
+	userId: number,
+	originalAddressType: AddressType,
+	originalValidFrom: Date,
+	addressData: AddressData
+) => {
+	return prisma.users_addresses.update({
 		where: {
 			address_id: {
 				user_id: userId,
-				address_type: addressData.address_type,
-				valid_from: addressData.valid_from
+				address_type: originalAddressType,
+				valid_from: originalValidFrom
 			}
 		},
 		data: { ...addressData }
 	});
-
-	revalidatePath('/[id]');
 };

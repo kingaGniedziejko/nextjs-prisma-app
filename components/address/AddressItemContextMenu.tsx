@@ -4,9 +4,7 @@ import React from 'react';
 import ContextMenu from '../ContextMenu';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddEditAddressDialog from './AddEditAddressDialog';
 import { Address } from '@/lib/types/types';
-import { useDialog } from '@/lib/hooks/useDialog';
 import { useRouter } from 'next/navigation';
 import { parseAddressId } from '@/lib/utils';
 
@@ -15,10 +13,8 @@ interface AddressItemContextMenuProps {
 }
 
 const AddressItemContextMenu: React.FC<AddressItemContextMenuProps> = ({ address }) => {
-	const [editDialogOpen, handleOpenEditDialog, handleCloseEditDialog] = useDialog();
-	const handleDeleteAddress = () => {};
-
 	const router = useRouter();
+
 	const handleEditClick = () => {
 		router.push(
 			`/${address.user_id}/edit/${parseAddressId(
@@ -28,6 +24,8 @@ const AddressItemContextMenu: React.FC<AddressItemContextMenuProps> = ({ address
 			)}`
 		);
 	};
+
+	const handleDeleteClick = () => {};
 
 	return (
 		<>
@@ -42,16 +40,9 @@ const AddressItemContextMenu: React.FC<AddressItemContextMenuProps> = ({ address
 					{
 						actionTitle: 'Delete',
 						actionIcon: <DeleteIcon fontSize="small" />,
-						actionHandler: handleDeleteAddress
+						actionHandler: handleDeleteClick
 					}
 				]}
-			/>
-			<AddEditAddressDialog
-				open={editDialogOpen}
-				handleClose={handleCloseEditDialog}
-				isEdit
-				userId={address.user_id}
-				addressToEdit={address}
 			/>
 		</>
 	);

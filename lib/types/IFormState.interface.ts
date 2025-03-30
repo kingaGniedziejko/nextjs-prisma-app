@@ -1,3 +1,5 @@
 export type IFormState<T> = {
-	[Property in keyof T]: string;
+	errors?: Partial<{
+		[Property in keyof T]: string;
+	}>;
 };
