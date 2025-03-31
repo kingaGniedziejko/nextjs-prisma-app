@@ -5,7 +5,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@m
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import AddressDisplay from './AddressDisplay';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Address, AddressFormData } from '@/lib/types/types';
+import { Address, AddressFormData } from '@/lib/types/Address.type';
 import dayjs from 'dayjs';
 import { IFormState } from '@/lib/types/IFormState.interface';
 import { saveUserAddress } from '@/actions/userAddressActions';
@@ -23,7 +23,7 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 
 	const defaultAddress: AddressFormData = {
 		address_type: addressToEdit?.address_type || '',
-		valid_from: dayjs(addressToEdit?.valid_from.toISOString()) || dayjs(),
+		valid_from: addressToEdit ? dayjs(addressToEdit?.valid_from.toISOString()) : '',
 		post_code: addressToEdit?.post_code || '',
 		city: addressToEdit?.city || '',
 		country_code: addressToEdit?.country_code || '',
@@ -58,7 +58,7 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 
 	return (
 		<>
-			{true && <Loader />}
+			{isPending && <Loader />}
 			<form id="add-edit-address-form" action={formAction} className="flex flex-col !space-y-5">
 				<FormControl fullWidth variant="standard" error={!!state.errors?.address_type}>
 					<InputLabel id="address_type_label">Address type</InputLabel>
@@ -168,10 +168,15 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 				/>
 				<AddressDisplay className="mt-5" address={addressValue} />
 				<div className="flex flex-row justify-end !space-x-3 mt-5">
-					<Button variant="outlined" onClick={handleCancel}>
+					<Button variant="outlined" onClick={handleCancel} disabled={isPending}>
 						Cancel
 					</Button>
-					<Button variant="contained" type="submit" form="add-edit-address-form">
+					<Button
+						variant="contained"
+						type="submit"
+						form="add-edit-address-form"
+						disabled={isPending}
+					>
 						Save
 					</Button>
 				</div>

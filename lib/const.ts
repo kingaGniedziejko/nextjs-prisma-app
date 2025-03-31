@@ -1,4 +1,4 @@
-import { AddressType } from './types/types';
+import { AddressType } from './types/Address.type';
 
 export const dateFormat = 'YYYY-MM-DD';
 

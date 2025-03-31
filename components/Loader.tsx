@@ -5,7 +5,7 @@ interface LoaderProps {}
 
 const Loader: React.FC<LoaderProps> = ({}) => {
 	return (
-		<div className="w-full h-full absolute top-0 left-0 flex justify-center items-center">
+		<div className="w-full h-full absolute bg-transparent top-0 left-0 flex justify-center items-center z-10">
 			<CircularProgress />
 		</div>
 	);

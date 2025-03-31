@@ -1,4 +1,4 @@
-import { User } from '@/lib/types/types';
+import { User } from '@/lib/types/User.type';
 import { Avatar } from '@mui/material';
 import React from 'react';
 import { stringToColor } from '@/lib/utils';
@@ -18,8 +18,8 @@ const UserItem: React.FC<UserItemProps> = ({ user, className }) => {
 					{user.initials}
 				</Avatar>
 				<div>
-					<p className="text-lg font-semibold mb-[-3px]">{`${user.first_name} ${user.last_name}`}</p>
-					<p>{user.email}</p>
+					<p className="text-md font-semibold mb-[-3px]">{`${user.first_name} ${user.last_name}`}</p>
+					<p className="text-sm">{user.email}</p>
 				</div>
 			</Link>
 			<UserItemContextMenu />

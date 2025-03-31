@@ -1,7 +1,7 @@
 import AddEditAddressForm from '@/components/address/AddEditAddressForm';
 import Modal from '@/components/Modal';
-import { getUserAddress } from '@/lib/addresses';
-import { getUser } from '@/lib/users';
+import { getUserAddress } from '@/lib/data/addresses';
+import { getUser } from '@/lib/data/users';
 import { splitAddressId } from '@/lib/utils';
 
 interface PageProps {
@@ -28,7 +28,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
 
 	return (
 		<Modal
-			title={`Edit Address of ${user?.first_name} ${user?.last_name}`}
+			title={`Edit address of ${user?.first_name} ${user?.last_name}`}
 			redirectPathOnClose={`/${userId}`}
 		>
 			<AddEditAddressForm userId={userId} addressToEdit={address} />

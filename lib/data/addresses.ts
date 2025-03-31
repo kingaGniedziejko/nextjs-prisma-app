@@ -1,5 +1,5 @@
-import { prisma } from './prisma';
-import { Address, AddressData, AddressType } from './types/types';
+import { prisma } from '../prisma';
+import { Address, AddressData, AddressType } from '../types/Address.type';
 
 export const getUserAddresses = async (
 	userId: number,

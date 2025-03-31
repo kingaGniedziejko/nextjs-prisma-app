@@ -1,7 +1,7 @@
 import ListPagination from '@/components/ListPagination';
 import AddressItem from '@/components/address/AddressItem';
-import { getUser } from '@/lib/users';
-import { getUserAddresses } from '@/lib/addresses';
+import { getUser } from '@/lib/data/users';
+import { getUserAddresses } from '@/lib/data/addresses';
 import CreateAddressButton from '@/components/address/CreateAddressButton';
 
 const PAGE_SIZE = 7;
@@ -24,7 +24,7 @@ const Page: React.FC<PageProps> = async ({ params, searchParams }) => {
 	return (
 		<>
 			<div className="flex flex-row justify-between">
-				<h1 className="text-2xl font-bold">
+				<h1 className="text-2xl font-medium">
 					{`${user?.first_name} ${user?.last_name}`} - Addresses
 				</h1>
 				<CreateAddressButton userId={Number(id)} />

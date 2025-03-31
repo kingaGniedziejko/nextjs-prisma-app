@@ -1,5 +1,5 @@
-import { prisma } from './prisma';
-import { User } from './types/types';
+import { prisma } from '../prisma';
+import { User } from '../types/User.type';
 
 export const getUsers = async (page: number, pageSize = 10): Promise<[User[], number]> => {
 	const usersPromise = prisma.users.findMany({

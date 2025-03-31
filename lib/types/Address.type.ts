@@ -1,8 +1,5 @@
-import type { users } from '@prisma/client';
 import type { users_addresses } from '@prisma/client';
 import { Dayjs } from 'dayjs';
-
-export type User = users;
 
 export enum AddressType {
 	Home = 'HOME',

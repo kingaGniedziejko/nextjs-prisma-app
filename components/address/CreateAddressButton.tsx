@@ -2,22 +2,23 @@
 
 import { Button } from '@mui/material';
 import React from 'react';
-import AddEditAddressDialog from './AddEditAddressDialog';
-import { useDialog } from '@/lib/hooks/useDialog';
+import { useRouter } from 'next/navigation';
 
 interface CreateAddressButtonProps {
 	userId: number;
 }
 
 const CreateAddressButton: React.FC<CreateAddressButtonProps> = ({ userId }) => {
-	const [open, handleOpen, handleClose] = useDialog();
+	const router = useRouter();
+
+	const handleClick = () => {
+		router.push(`/${userId}/add`);
+	};
+
 	return (
-		<>
-			<Button variant="contained" onClick={handleOpen}>
-				Create
-			</Button>
-			{/* <AddEditAddressDialog open={open} handleClose={handleClose} userId={userId} /> */}
-		</>
+		<Button variant="contained" onClick={handleClick}>
+			Create
+		</Button>
 	);
 };
 

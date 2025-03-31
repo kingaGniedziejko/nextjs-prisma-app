@@ -4,7 +4,7 @@ import React from 'react';
 import ContextMenu from '../ContextMenu';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Address } from '@/lib/types/types';
+import { Address } from '@/lib/types/Address.type';
 import { useRouter } from 'next/navigation';
 import { parseAddressId } from '@/lib/utils';
 

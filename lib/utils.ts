@@ -1,5 +1,5 @@
 import { addressTypeList } from './const';
-import { AddressType } from './types/types';
+import { AddressType } from './types/Address.type';
 
 export const stringToColor = (string: string) => {
 	let hash = 0;

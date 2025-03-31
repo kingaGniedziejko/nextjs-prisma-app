@@ -1,8 +1,8 @@
 'use server';
 
-import { createUserAddress, updateUserAddress } from '@/lib/addresses';
+import { createUserAddress, updateUserAddress } from '@/lib/data/addresses';
 import { IFormState } from '@/lib/types/IFormState.interface';
-import { AddressData, AddressFormData, AddressType } from '@/lib/types/types';
+import { AddressData, AddressFormData, AddressType } from '@/lib/types/Address.type';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
