@@ -18,8 +18,8 @@ const AddressItem: React.FC<AddressItemProps> = ({ address, className }) => {
 			<Card variant="outlined" className={`${className} flex flex-row it space-x-4 p-4`}>
 				<PlaceIcon className="mt-1" />
 				<div className="flex flex-col sm:flex-row">
-					<AddressDisplay address={address} className="mr-20" />
-					<div className="mt-2 sm:mt-[3px]">
+					<AddressDisplay address={address} className="sm:mr-12 w-max sm:w-50 md:w-65" />
+					<div className="mt-3 sm:mt-[3px]">
 						<p className="text-xs font-semibold">{address.address_type}</p>
 						<p className="text-xs">Valid from: {dayjs(address.valid_from).format(dateFormat)}</p>
 					</div>

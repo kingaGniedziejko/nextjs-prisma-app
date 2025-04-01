@@ -14,7 +14,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<div className="flex flex-col p-5 md:p-10 space-y-5 h-[100vh] w-[100vw]">{children}</div>
+				<div className="flex flex-col p-5 md:p-10 space-y-5 h-[100vh] w-full">{children}</div>
 			</body>
 		</html>
 	);

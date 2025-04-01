@@ -8,10 +8,16 @@ import { useRouter } from 'next/navigation';
 interface ModalProps {
 	title: string;
 	redirectPathOnClose?: string;
+	dialogContentClassName?: string;
 	children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ title, redirectPathOnClose, children }) => {
+const Modal: React.FC<ModalProps> = ({
+	title,
+	redirectPathOnClose,
+	dialogContentClassName,
+	children
+}) => {
 	const router = useRouter();
 
 	const handleCloseDialog = () => {
@@ -35,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({ title, redirectPathOnClose, children }) =
 					<CloseIcon />
 				</IconButton>
 			</DialogTitle>
-			<DialogContent>{children}</DialogContent>
+			<DialogContent className={dialogContentClassName}>{children}</DialogContent>
 		</Dialog>
 	);
 };

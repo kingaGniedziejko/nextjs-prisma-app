@@ -166,8 +166,11 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 					error={!!state.errors?.country_code}
 					helperText={state.errors?.country_code}
 				/>
-				<AddressDisplay className="mt-5" address={addressValue} />
-				<div className="flex flex-row justify-end !space-x-3 mt-5">
+				<div className="!mt-5 flex flex-col">
+					<p>Address preview:</p>
+					<AddressDisplay className="mt-1" address={addressValue} />
+				</div>
+				<div className="sticky w-full bottom-0 right-0 flex flex-row justify-end !space-x-3 py-5 bg-white">
 					<Button variant="outlined" onClick={handleCancel} disabled={isPending}>
 						Cancel
 					</Button>
