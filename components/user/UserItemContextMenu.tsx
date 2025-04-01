@@ -4,10 +4,23 @@ import React from 'react';
 import ContextMenu from '../ContextMenu';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useRouter } from 'next/navigation';
 
-interface UserItemContextMenuProps {}
+interface UserItemContextMenuProps {
+	userId: number;
+}
 
-const UserItemContextMenu: React.FC<UserItemContextMenuProps> = ({}) => {
+const UserItemContextMenu: React.FC<UserItemContextMenuProps> = ({ userId }) => {
+	const router = useRouter();
+
+	const handleEditClick = () => {
+		router.push(`/edit/${userId}`);
+	};
+
+	const handleDeleteClick = () => {
+		// deleteUser(userId);
+	};
+
 	return (
 		<>
 			<ContextMenu
@@ -16,12 +29,12 @@ const UserItemContextMenu: React.FC<UserItemContextMenuProps> = ({}) => {
 					{
 						actionTitle: 'Edit',
 						actionIcon: <EditIcon fontSize="small" />,
-						actionHandler: () => null
+						actionHandler: handleEditClick
 					},
 					{
 						actionTitle: 'Delete',
 						actionIcon: <DeleteIcon fontSize="small" />,
-						actionHandler: () => null
+						actionHandler: handleDeleteClick
 					}
 				]}
 			/>

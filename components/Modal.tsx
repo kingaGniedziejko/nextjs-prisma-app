@@ -9,7 +9,7 @@ interface ModalProps {
 	title: string;
 	redirectPathOnClose?: string;
 	dialogContentClassName?: string;
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({

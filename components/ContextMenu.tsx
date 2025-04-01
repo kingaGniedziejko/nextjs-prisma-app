@@ -38,18 +38,6 @@ const ContextMenu: React.FC<ContextMenuProps> = ({ className, actions }) => {
 						<ListItemText>{action.actionTitle}</ListItemText>
 					</MenuItem>
 				))}
-				{/* <MenuItem onClick={handleClose}>
-					<ListItemIcon>
-						<EditIcon fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Edit</ListItemText>
-				</MenuItem>
-				<MenuItem onClick={handleClose}>
-					<ListItemIcon>
-						<DeleteIcon fontSize="small" />
-					</ListItemIcon>
-					<ListItemText>Delete</ListItemText>
-				</MenuItem> */}
 			</Menu>{' '}
 		</div>
 	);

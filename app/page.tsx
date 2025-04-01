@@ -1,7 +1,8 @@
-import { Button, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import UserItem from '@/components/user/UserItem';
 import ListPagination from '@/components/ListPagination';
 import { getUsers } from '@/lib/data/users';
+import CreateUserButton from '@/components/user/CreateUserButton';
 
 const PAGE_SIZE = 7;
 
@@ -18,7 +19,7 @@ const Page: React.FC<PageProps> = async ({ searchParams }) => {
 		<>
 			<div className="flex flex-row justify-between">
 				<h1 className="text-2xl font-medium">Users</h1>
-				<Button variant="contained">Create</Button>
+				<CreateUserButton />
 			</div>
 			<div className="flex flex-col overflow-y-auto">
 				{users.map((user, index) => (

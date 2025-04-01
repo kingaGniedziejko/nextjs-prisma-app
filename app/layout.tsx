@@ -7,15 +7,18 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-	children
+	children,
+	modal
 }: Readonly<{
 	children: React.ReactNode;
+	modal: React.ReactNode;
 }>) {
 	return (
 		<html lang="en">
 			<body>
 				<div className="flex flex-col p-5 md:p-10 space-y-5 h-[100vh] w-full">{children}</div>
 			</body>
+			{modal}
 		</html>
 	);
 }

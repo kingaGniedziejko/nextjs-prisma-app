@@ -22,7 +22,7 @@ const UserItem: React.FC<UserItemProps> = ({ user, className }) => {
 					<p className="text-sm">{user.email}</p>
 				</div>
 			</Link>
-			<UserItemContextMenu />
+			<UserItemContextMenu userId={user.id} />
 		</div>
 	);
 };
