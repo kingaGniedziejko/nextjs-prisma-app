@@ -8,7 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Address, AddressFormData } from '@/lib/types/Address.type';
 import dayjs from 'dayjs';
 import { IFormState } from '@/lib/types/IFormState.interface';
-import { saveUserAddress } from '@/actions/userAddressActions';
+import { saveAddress } from '@/actions/addressActions';
 import { addressTypeList, dateFormat } from '@/lib/const';
 import { useRouter } from 'next/navigation';
 import Loader from '../Loader';
@@ -41,7 +41,7 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 		Partial<IFormState<AddressFormData>>,
 		FormData
 	>(
-		saveUserAddress.bind(
+		saveAddress.bind(
 			null,
 			userId,
 			!!addressToEdit,

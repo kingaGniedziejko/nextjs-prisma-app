@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Address } from '@/lib/types/Address.type';
 import { useRouter } from 'next/navigation';
 import { parseAddressId } from '@/lib/utils';
+import { deleteAddress } from '@/actions/addressActions';
 
 interface AddressItemContextMenuProps {
 	address: Address;
@@ -25,7 +26,9 @@ const AddressItemContextMenu: React.FC<AddressItemContextMenuProps> = ({ address
 		);
 	};
 
-	const handleDeleteClick = () => {};
+	const handleDeleteClick = () => {
+		deleteAddress(address.user_id, address.address_type, address.valid_from);
+	};
 
 	return (
 		<>

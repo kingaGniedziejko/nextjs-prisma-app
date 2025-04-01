@@ -61,3 +61,19 @@ export const updateUserAddress = async (
 		data: { ...addressData }
 	});
 };
+
+export const deleteUserAddress = async (
+	userId: number,
+	addressType: AddressType,
+	validFrom: Date
+) => {
+	return prisma.users_addresses.delete({
+		where: {
+			address_id: {
+				user_id: userId,
+				address_type: addressType,
+				valid_from: validFrom
+			}
+		}
+	});
+};

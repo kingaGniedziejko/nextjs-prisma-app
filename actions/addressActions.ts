@@ -1,12 +1,12 @@
 'use server';
 
-import { createUserAddress, updateUserAddress } from '@/lib/data/addresses';
+import { createUserAddress, deleteUserAddress, updateUserAddress } from '@/lib/data/addresses';
 import { IFormState } from '@/lib/types/IFormState.interface';
 import { AddressData, AddressFormData, AddressType } from '@/lib/types/Address.type';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-export const saveUserAddress = async (
+export const saveAddress = async (
 	userId: number,
 	isEdit: boolean,
 	originalAddressType: AddressType | undefined,
@@ -60,4 +60,9 @@ export const saveUserAddress = async (
 
 	revalidatePath(`/${userId}`);
 	redirect(`/${userId}`);
+};
+
+export const deleteAddress = async (userId: number, addressType: AddressType, validFrom: Date) => {
+	await deleteUserAddress(userId, addressType, validFrom);
+	revalidatePath(`/${userId}`);
 };
