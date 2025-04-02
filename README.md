@@ -16,4 +16,5 @@ Next.js, React, TypeScript, Tailwindcss, Material UI (MUI), Prisma, Postgresql
 ### App
 
 1. create .env file with `DATABASE_URL="postgresql://myuser:mypassword@localhost:5432/mydatabase"` variable
-2. `npm run dev` / `yarn dev`
+2. `npm install`
+3. `npm run dev` / `yarn dev`
