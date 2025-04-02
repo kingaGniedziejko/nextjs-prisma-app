@@ -35,7 +35,6 @@ export const getUserAddress = async (
 };
 
 export const createUserAddress = async (userId: number, addressData: AddressData) => {
-	console.log('createUserAddress', addressData);
 	return prisma.users_addresses.create({
 		data: {
 			user_id: userId,

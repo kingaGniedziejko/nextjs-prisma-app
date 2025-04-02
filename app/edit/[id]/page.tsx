@@ -1,3 +1,4 @@
+import AddEditUserForm from '@/components/user/AddEditUserForm';
 import { getUser } from '@/lib/data/users';
 
 interface PageProps {
@@ -17,7 +18,7 @@ const Page: React.FC<PageProps> = async ({ params }) => {
 			<h1 className="text-2xl font-medium">
 				Edit user: {user?.first_name} {user?.last_name}
 			</h1>
-			{/* <AddEditUserForm userId={userId} /> */}
+			<AddEditUserForm userToEdit={user} redirectPath="/" />
 		</div>
 	);
 };

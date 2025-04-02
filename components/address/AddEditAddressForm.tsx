@@ -91,7 +91,6 @@ const AddEditAddressForm: React.FC<AddEditAddressFormProps> = ({ userId, address
 						format={dateFormat}
 						value={addressValue.valid_from || null}
 						onChange={(value) => {
-							console.log(dayjs(value?.format(dateFormat)).toString());
 							handleAddressChange('valid_from', value || '');
 						}}
 					/>

@@ -4,7 +4,8 @@ import React from 'react';
 import ContextMenu from '../ContextMenu';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { removeUser } from '@/actions/userActions';
 
 interface UserItemContextMenuProps {
 	userId: number;
@@ -18,7 +19,7 @@ const UserItemContextMenu: React.FC<UserItemContextMenuProps> = ({ userId }) => 
 	};
 
 	const handleDeleteClick = () => {
-		// deleteUser(userId);
+		removeUser(userId);
 	};
 
 	return (

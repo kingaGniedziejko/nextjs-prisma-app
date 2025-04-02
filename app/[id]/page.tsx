@@ -29,16 +29,22 @@ const Page: React.FC<PageProps> = async ({ params, searchParams }) => {
 				</h1>
 				<CreateAddressButton userId={Number(id)} />
 			</div>
-			<div className="flex flex-col overflow-y-auto">
-				{addresses.map((address, index) => (
-					<AddressItem key={index} address={address} className="my-3" />
-				))}
-			</div>
-			<ListPagination
-				className="mt-auto self-center"
-				totalPages={totalPagesCount}
-				currentPage={currentPage}
-			/>
+			{addresses.length === 0 ? (
+				<p className="pt-10 text-center text-neutral-400 italic">No addresses</p>
+			) : (
+				<>
+					<div className="flex flex-col overflow-y-auto">
+						{addresses.map((address, index) => (
+							<AddressItem key={index} address={address} className="my-3" />
+						))}
+					</div>
+					<ListPagination
+						className="mt-auto self-center"
+						totalPages={totalPagesCount}
+						currentPage={currentPage}
+					/>
+				</>
+			)}
 		</>
 	);
 };

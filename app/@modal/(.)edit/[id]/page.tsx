@@ -1,4 +1,5 @@
 import Modal from '@/components/Modal';
+import AddEditUserForm from '@/components/user/AddEditUserForm';
 import { getUser } from '@/lib/data/users';
 
 interface PageProps {
@@ -16,10 +17,9 @@ const Page: React.FC<PageProps> = async ({ params }) => {
 	return (
 		<Modal
 			title={`Edit user: ${user?.first_name} ${user?.last_name}`}
-			redirectPathOnClose="/"
 			dialogContentClassName="!pb-0"
 		>
-			{/* <AddEditAddressForm userToEdit={userId} /> */}
+			<AddEditUserForm userToEdit={user} />
 		</Modal>
 	);
 };

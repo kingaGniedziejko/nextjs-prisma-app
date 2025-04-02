@@ -29,7 +29,6 @@ const Page: React.FC<PageProps> = async ({ params }) => {
 	return (
 		<Modal
 			title={`Edit address of ${user?.first_name} ${user?.last_name}`}
-			redirectPathOnClose={`/${userId}`}
 			dialogContentClassName="!pb-0"
 		>
 			<AddEditAddressForm userId={userId} addressToEdit={address} />
